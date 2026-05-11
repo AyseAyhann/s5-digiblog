@@ -1,5 +1,30 @@
 import { menuElemanlari } from "./../../resources.js";
 
+function MenuBuilder(arr) {
+  const div = document.createElement("div");
+  div.classList.add("menu");
+
+  const ul = document.createElement("ul");
+  div.appendChild(ul);
+
+  arr.forEach((element) => {
+    const li = document.createElement("li");
+    li.textContent = element;
+    ul.appendChild(li);
+  });
+
+  const button = document.getElementsByClassName("menu-button")[0];
+  button.addEventListener("click", () => {
+    div.classList.toggle("isOpen");
+  });
+
+  return div;
+}
+/*MenuBuilder fonksiyonu ve resouces.js dosyasından gelen menuElemanlari arrayini kullanarak oluşturduğunuz menüyü, header classına sahip elemana ekleyin.*/
+
+const menu = MenuBuilder(menuElemanlari);
+document.getElementsByClassName("header")[0].appendChild(menu);
+
 /*
 Adım 1: MenuBuilder component fonksiyonu yazmak
 Stringlerden oluşan bir arrayden, bir menü oluşturmak için MenuBuilder adında bir component (fonksiyon) yazın.
@@ -26,5 +51,4 @@ MenuBuilder fonksiyonu ve resouces.js dosyasından gelen menuElemanlari arrayini
 
 
 Not 1: İlk 3 adım MenuBuilder içinde yapılmalı.
-Not 2: MenuBuilder fonksiyonunda oluşturduklarınızı return etmeyi unutmayın.
-*/
+Not 2: MenuBuilder fonksiyonunda oluşturduklarınızı return etmeyi unutmayın.*/
